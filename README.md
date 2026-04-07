@@ -67,14 +67,25 @@ mvn spring-boot:run
 
 ## 📡 Endpoints
 
-### Professor
+### 👨‍🎓 Aluno
 
-| Método | Rota              | Descrição       |
-| ------ | ----------------- | --------------- |
-| POST   | /professores      | Criar professor |
-| GET    | /professores      | Listar todos    |
-| GET    | /professores/{id} | Buscar por ID   |
-| DELETE | /professores/{id} | Deletar         |
+| Método | Rota              | Descrição          |
+| ------ | ----------------- | ------------------ |
+| POST   | /alunos           | Criar aluno        |
+| GET    | /alunos           | Listar todos       |
+| GET    | /alunos/{id}      | Buscar por ID      |
+| PUT    | /alunos/{id}      | Atualizar aluno    |
+| DELETE | /alunos/{id}      | Deletar            |
+
+### 👨‍🏫 Professor
+
+| Método | Rota              | Descrição          |
+| ------ | ----------------- | ------------------ |
+| POST   | /professores      | Criar professor    |
+| GET    | /professores      | Listar todos       |
+| GET    | /professores/{id} | Buscar por ID      |
+| PUT    | /professores/{id} | Atualizar professor|
+| DELETE | /professores/{id} | Deletar            |
 
 ---
 
