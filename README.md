@@ -19,7 +19,7 @@
 
 ## 💡 Sobre o Projeto
 
-Esta API fornece operações CRUD completas para o gerenciamento de **alunos** e **professores** em um ambiente educacional. O projeto foi construído seguindo boas práticas de desenvolvimento com Spring Boot, utilizando uma arquitetura em camadas bem definida e persistência de dados com PostgreSQL.
+Esta API fornece operações CRUD para o gerenciamento de **alunos** e **professores** em um ambiente educacional. O projeto foi construído seguindo boas práticas de desenvolvimento com Spring Boot, utilizando uma arquitetura em camadas bem definida e persistência de dados com PostgreSQL.
 
 ---
 
@@ -28,11 +28,11 @@ Esta API fornece operações CRUD completas para o gerenciamento de **alunos** e
 | Tecnologia | Versão | Finalidade |
 |---|---|---|
 | [Java](https://www.oracle.com/java/) | 21 | Linguagem principal |
-| [Spring Boot](https://spring.io/projects/spring-boot) | — | Framework para criação da API REST |
+| [Spring Boot](https://spring.io/projects/spring-boot) | 4.0.5 | Framework para criação da API REST |
 | [Spring Data JPA](https://spring.io/projects/spring-data-jpa) | — | Abstração do acesso ao banco de dados |
 | [Hibernate](https://hibernate.org/) | — | ORM (Object-Relational Mapping) |
-| [PostgreSQL](https://www.postgresql.org/) | — | Banco de dados relacional |
-| [Maven](https://maven.apache.org/) | — | Gerenciamento de dependências e build |
+| [PostgreSQL](https://www.postgresql.org/) | 18.3-2 | Banco de dados relacional |
+| [Maven](https://maven.apache.org/) | 3.9.9 | Gerenciamento de dependências e build |
 
 ---
 
@@ -203,7 +203,7 @@ As tabelas são geradas automaticamente pelo Hibernate na primeira execução.
 
 ## 👨‍💻 Autor
 
-**Victor Gadelha**
+**Victor de Oliveira Gadelha**
 
 [![GitHub](https://img.shields.io/badge/GitHub-VictorDGadelha-181717?style=flat&logo=github)](https://github.com/VictorDGadelha)
 
