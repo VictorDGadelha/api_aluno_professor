@@ -1,107 +1,212 @@
 # 📚 API Aluno Professor
 
-API REST desenvolvida com Spring Boot para gerenciamento de alunos e professores.
+> API REST para gerenciamento de alunos e professores, desenvolvida com **Java 21** e **Spring Boot**.
 
 ---
 
-## 🚀 Tecnologias utilizadas
+## 📋 Índice
 
-* Java 21
-* Spring Boot
-* Spring Data JPA
-* PostgreSQL
-* Maven
-
----
-
-## 📌 Funcionalidades
-
-### 👨‍🏫 Professor
-
-* Criar professor
-* Listar professores
-* Buscar professor por ID
-* Deletar professor
-
-### 👨‍🎓 Aluno
-
-* Criar aluno
-* Listar alunos
-* Buscar aluno por ID
-* Deletar aluno
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Tecnologias](#-tecnologias)
+- [Arquitetura](#-arquitetura)
+- [Pré-requisitos](#-pré-requisitos)
+- [Como Executar](#-como-executar)
+- [Endpoints](#-endpoints)
+- [Banco de Dados](#-banco-de-dados)
+- [Autor](#-autor)
 
 ---
 
-## 🧠 Arquitetura do Projeto
+## 💡 Sobre o Projeto
 
-O projeto segue o padrão de camadas:
-
-* **Controller** → recebe requisições HTTP
-* **Service** → regras de negócio
-* **Repository** → acesso ao banco de dados
-* **Model** → entidades do sistema
+Esta API fornece operações CRUD completas para o gerenciamento de **alunos** e **professores** em um ambiente educacional. O projeto foi construído seguindo boas práticas de desenvolvimento com Spring Boot, utilizando uma arquitetura em camadas bem definida e persistência de dados com PostgreSQL.
 
 ---
 
-## ▶️ Como executar o projeto
+## 🛠️ Tecnologias
 
-1. Clone o repositório:
+| Tecnologia | Versão | Finalidade |
+|---|---|---|
+| [Java](https://www.oracle.com/java/) | 21 | Linguagem principal |
+| [Spring Boot](https://spring.io/projects/spring-boot) | — | Framework para criação da API REST |
+| [Spring Data JPA](https://spring.io/projects/spring-data-jpa) | — | Abstração do acesso ao banco de dados |
+| [Hibernate](https://hibernate.org/) | — | ORM (Object-Relational Mapping) |
+| [PostgreSQL](https://www.postgresql.org/) | — | Banco de dados relacional |
+| [Maven](https://maven.apache.org/) | — | Gerenciamento de dependências e build |
+
+---
+
+## 🏗️ Arquitetura
+
+O projeto segue o padrão de **arquitetura em camadas (Layered Architecture)**:
+
+```
+src/
+└── main/
+    └── java/
+        └── com/example/api/
+            ├── controller/    # Recebe e responde às requisições HTTP
+            ├── service/       # Contém as regras de negócio
+            ├── repository/    # Interface com o banco de dados (Spring Data JPA)
+            └── model/         # Entidades mapeadas para o banco (Aluno, Professor)
+```
+
+**Fluxo de uma requisição:**
+
+```
+Cliente HTTP
+    │
+    ▼
+Controller  →  Service  →  Repository  →  Banco de Dados (PostgreSQL)
+    │              │
+    │         (regras de
+    │          negócio)
+    ▼
+Resposta JSON
+```
+
+---
+
+## ✅ Pré-requisitos
+
+Antes de iniciar, certifique-se de ter instalado em sua máquina:
+
+- [Java 21+](https://www.oracle.com/java/technologies/downloads/)
+- [Maven 3.8+](https://maven.apache.org/download.cgi)
+- [PostgreSQL 14+](https://www.postgresql.org/download/)
+- (Opcional) [DBeaver](https://dbeaver.io/) ou outro cliente SQL para visualizar o banco
+
+---
+
+## ▶️ Como Executar
+
+### 1. Clone o repositório
 
 ```bash
 git clone https://github.com/VictorDGadelha/api_aluno_professor.git
+cd api_aluno_professor
 ```
 
-2. Configure o banco PostgreSQL:
+### 2. Configure o banco de dados
 
-* Criar banco: `projeto_javap2`
+Acesse o PostgreSQL e crie o banco:
 
-3. Configure o `application.properties`
+```sql
+CREATE DATABASE projeto_javap2;
+```
 
-4. Execute a aplicação:
+### 3. Configure o `application.properties`
+
+Edite o arquivo em `src/main/resources/application.properties` com suas credenciais:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/projeto_javap2
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+```
+
+### 4. Execute a aplicação
 
 ```bash
 mvn spring-boot:run
 ```
 
+A API estará disponível em: `http://localhost:8080`
+
 ---
 
 ## 📡 Endpoints
 
-### 👨‍🎓 Aluno
+### 👨‍🎓 Aluno — `/alunos`
 
-| Método | Rota              | Descrição          |
-| ------ | ----------------- | ------------------ |
-| POST   | /alunos           | Criar aluno        |
-| GET    | /alunos           | Listar todos       |
-| GET    | /alunos/{id}      | Buscar por ID      |
-| PUT    | /alunos/{id}      | Atualizar aluno    |
-| DELETE | /alunos/{id}      | Deletar            |
+| Método | Rota | Descrição | Body (JSON) |
+|--------|------|-----------|-------------|
+| `POST` | `/alunos` | Criar aluno | `{ "nome": "...", "email": "..." }` |
+| `GET` | `/alunos` | Listar todos os alunos | — |
+| `GET` | `/alunos/{id}` | Buscar aluno por ID | — |
+| `PUT` | `/alunos/{id}` | Atualizar aluno | `{ "nome": "...", "email": "..." }` |
+| `DELETE` | `/alunos/{id}` | Deletar aluno | — |
 
-### 👨‍🏫 Professor
+**Exemplo de requisição — criar aluno:**
 
-| Método | Rota              | Descrição          |
-| ------ | ----------------- | ------------------ |
-| POST   | /professores      | Criar professor    |
-| GET    | /professores      | Listar todos       |
-| GET    | /professores/{id} | Buscar por ID      |
-| PUT    | /professores/{id} | Atualizar professor|
-| DELETE | /professores/{id} | Deletar            |
+```http
+POST /alunos
+Content-Type: application/json
+
+{
+  "nome": "João Silva",
+  "email": "joao.silva@email.com"
+}
+```
+
+**Exemplo de resposta:**
+
+```json
+{
+  "id": 1,
+  "nome": "João Silva",
+  "email": "joao.silva@email.com"
+}
+```
 
 ---
 
-## 🧪 Testes no Insomnia
+### 👨‍🏫 Professor — `/professores`
 
-(Coloque aqui prints das requisições funcionando)
+| Método | Rota | Descrição | Body (JSON) |
+|--------|------|-----------|-------------|
+| `POST` | `/professores` | Criar professor | `{ "nome": "...", "email": "..." }` |
+| `GET` | `/professores` | Listar todos os professores | — |
+| `GET` | `/professores/{id}` | Buscar professor por ID | — |
+| `PUT` | `/professores/{id}` | Atualizar professor | `{ "nome": "...", "email": "..." }` |
+| `DELETE` | `/professores/{id}` | Deletar professor | — |
+
+**Exemplo de requisição — criar professor:**
+
+```http
+POST /professores
+Content-Type: application/json
+
+{
+  "nome": "Maria Oliveira",
+  "email": "maria.oliveira@escola.com"
+}
+```
 
 ---
 
 ## 🗄️ Banco de Dados
 
-<img width="1912" height="953" alt="Tabela Professor DBeaver" src="https://github.com/user-attachments/assets/b60fa552-7fd4-4149-9667-908524131e06" />
-<img width="1909" height="990" alt="Tabela Alunos DBeaver" src="https://github.com/user-attachments/assets/eea717a3-482f-4459-890d-ef0c99500fa7" />
+As tabelas são geradas automaticamente pelo Hibernate na primeira execução.
+
+**Tabela `professores`:**
+
+| Coluna | Tipo | Descrição |
+|--------|------|-----------|
+| `id` | BIGINT (PK) | Identificador único |
+| `nome` | VARCHAR | Nome do professor |
+| `email` | VARCHAR | E-mail do professor |
+
+**Tabela `alunos`:**
+
+| Coluna | Tipo | Descrição |
+|--------|------|-----------|
+| `id` | BIGINT (PK) | Identificador único |
+| `nome` | VARCHAR | Nome do aluno |
+| `email` | VARCHAR | E-mail do aluno |
 
 ---
 
 ## 👨‍💻 Autor
 
-Victor Gadelha
+**Victor Gadelha**
+
+[![GitHub](https://img.shields.io/badge/GitHub-VictorDGadelha-181717?style=flat&logo=github)](https://github.com/VictorDGadelha)
+
+---
+
+> Projeto desenvolvido para fins acadêmicos.
