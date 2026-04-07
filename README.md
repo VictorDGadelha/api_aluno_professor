@@ -12,6 +12,7 @@
 - [Pré-requisitos](#-pré-requisitos)
 - [Como Executar](#-como-executar)
 - [Endpoints](#-endpoints)
+- [Testes no Insomnia](#-testes-no-insomnia)
 - [Banco de Dados](#-banco-de-dados)
 - [Autor](#-autor)
 
@@ -19,7 +20,7 @@
 
 ## 💡 Sobre o Projeto
 
-Esta API fornece operações CRUD completas para o gerenciamento de **alunos** e **professores** em um ambiente educacional. O projeto foi construído seguindo boas práticas de desenvolvimento com Spring Boot, utilizando uma arquitetura em camadas bem definida e persistência de dados com PostgreSQL.
+Esta API fornece operações CRUD para o gerenciamento de **alunos** e **professores** em um ambiente educacional. O projeto foi construído seguindo boas práticas de desenvolvimento com Spring Boot, utilizando uma arquitetura em camadas bem definida e persistência de dados com PostgreSQL.
 
 ---
 
@@ -28,11 +29,13 @@ Esta API fornece operações CRUD completas para o gerenciamento de **alunos** e
 | Tecnologia | Versão | Finalidade |
 |---|---|---|
 | [Java](https://www.oracle.com/java/) | 21 | Linguagem principal |
-| [Spring Boot](https://spring.io/projects/spring-boot) | — | Framework para criação da API REST |
+| [Spring Boot](https://spring.io/projects/spring-boot) | 4.0.5 | Framework base da aplicação |
+| [Spring Web](https://spring.io/projects/spring-framework) | — | Criação da API REST com Spring MVC |
 | [Spring Data JPA](https://spring.io/projects/spring-data-jpa) | — | Abstração do acesso ao banco de dados |
 | [Hibernate](https://hibernate.org/) | — | ORM (Object-Relational Mapping) |
-| [PostgreSQL](https://www.postgresql.org/) | — | Banco de dados relacional |
-| [Maven](https://maven.apache.org/) | — | Gerenciamento de dependências e build |
+| [PostgreSQL Driver](https://www.postgresql.org/) | — | Conexão JDBC/R2DBC com o banco PostgreSQL |
+| [Lombok](https://projectlombok.org/) | — | Redução de código boilerplate (getters, setters, construtores) |
+| [Maven](https://maven.apache.org/) | 3.9.9 | Gerenciamento de dependências e build |
 
 ---
 
@@ -125,10 +128,10 @@ A API estará disponível em: `http://localhost:8080`
 
 | Método | Rota | Descrição | Body (JSON) |
 |--------|------|-----------|-------------|
-| `POST` | `/alunos` | Criar aluno | `{ "nome": "...", "email": "...", "cpf": "..." }` |
+| `POST` | `/alunos` | Criar aluno | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
 | `GET` | `/alunos` | Listar todos os alunos | — |
 | `GET` | `/alunos/{id}` | Buscar aluno por ID | — |
-| `PUT` | `/alunos/{id}` | Atualizar aluno | `{ "nome": "...", "email": "...", "cpf": "..." }` |
+| `PUT` | `/alunos/{id}` | Atualizar aluno | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
 | `DELETE` | `/alunos/{id}` | Deletar aluno | — |
 
 **Exemplo de requisição — criar aluno:**
@@ -138,7 +141,7 @@ POST /alunos
 Content-Type: application/json
 
 {
-  "nome": "João Silva",
+  "nomeCompleto": "João Silva",
   "email": "joao.silva@email.com",
   "cpf": "123.456.789-00"
 }
@@ -149,7 +152,7 @@ Content-Type: application/json
 ```json
 {
   "id": 1,
-  "nome": "João Silva",
+  "nomeCompleto": "João Silva",
   "email": "joao.silva@email.com",
   "cpf": "123.456.789-00"
 }
@@ -161,10 +164,10 @@ Content-Type: application/json
 
 | Método | Rota | Descrição | Body (JSON) |
 |--------|------|-----------|-------------|
-| `POST` | `/professores` | Criar professor | `{ "nome": "...", "email": "...", "cpf": "..." }` |
+| `POST` | `/professores` | Criar professor | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
 | `GET` | `/professores` | Listar todos os professores | — |
 | `GET` | `/professores/{id}` | Buscar professor por ID | — |
-| `PUT` | `/professores/{id}` | Atualizar professor | `{ "nome": "...", "email": "...", "cpf": "..." }` |
+| `PUT` | `/professores/{id}` | Atualizar professor | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
 | `DELETE` | `/professores/{id}` | Deletar professor | — |
 
 **Exemplo de requisição — criar professor:**
@@ -174,11 +177,61 @@ POST /professores
 Content-Type: application/json
 
 {
-  "nome": "Maria Oliveira",
+  "nomeCompleto": "Maria Oliveira",
   "email": "maria.oliveira@escola.com",
   "cpf": "987.654.321-00"
 }
 ```
+**Exemplo de resposta:**
+
+```json
+{
+  "id": 1,
+  "nomeCompleto": "Maria Oliveira",
+  "email": "maria.oliveira@escola.com",
+  "cpf": "987.654.321-00"
+}
+```
+
+---
+
+## 🧪 Testes no Insomnia
+
+As requisições abaixo foram testadas utilizando o [Insomnia](https://insomnia.rest/).
+
+### 👨‍🎓 Aluno
+
+**Criar Aluno**
+![Criar Aluno](assets/requisição_criarAluno.png)
+
+**Listar Todos os Alunos**
+![Listar Todos os Alunos](assets/requisição_listarTodosAlunos.png)
+
+**Buscar Aluno por ID**
+![Buscar Aluno por ID](assets/requisição_buscarAlunoPorId.png)
+
+**Atualizar Aluno por ID**
+![Atualizar Aluno por ID](assets/requisição_atualizarAlunoPorId.png)
+
+**Deletar Aluno por ID**
+![Deletar Aluno por ID](assets/requisição_deletarAlunoPorId.png)
+
+### 👨‍🏫 Professor
+
+**Criar Professor**
+![Criar Professor](assets/requisição_criarProfessor.png)
+
+**Listar Todos os Professores**
+![Listar Todos os Professores](assets/requisição_listarTodosProfessores.png)
+
+**Buscar Professor por ID**
+![Buscar Professor por ID](assets/requisição_buscarProfessorPorId.png)
+
+**Atualizar Professor por ID**
+![Atualizar Professor por ID](assets/requisição_atualizarProfessorPorId.png)
+
+**Deletar Professor por ID**
+![Deletar Professor por ID](assets/requisição_deletarProfessorPorId.png)
 
 ---
 
@@ -188,17 +241,17 @@ As tabelas são geradas automaticamente pelo Hibernate na primeira execução.
 
 **Tabela `aluno`:**
 
-![Tabela Aluno DBeaver](assets/tabela_aluno_DBeaver.png)
+![Tabela Aluno DBeaver](Tabela_aluno.png)
 
 **Tabela `professor`:**
 
-![Tabela Professor DBeaver](assets/tabela_professor_DBeaver.png)
+![Tabela Professor DBeaver](Tabela_professor.png)
 
 ---
 
 ## 👨‍💻 Autor
 
-**Victor Gadelha**
+**Victor de Oliveira Gadelha**
 
 [![GitHub](https://img.shields.io/badge/GitHub-VictorDGadelha-181717?style=flat&logo=github)](https://github.com/VictorDGadelha)
 
