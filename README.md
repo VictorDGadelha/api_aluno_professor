@@ -125,10 +125,10 @@ A API estará disponível em: `http://localhost:8080`
 
 | Método | Rota | Descrição | Body (JSON) |
 |--------|------|-----------|-------------|
-| `POST` | `/alunos` | Criar aluno | `{ "nome": "...", "email": "...", "cpf": "..." }` |
+| `POST` | `/alunos` | Criar aluno | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
 | `GET` | `/alunos` | Listar todos os alunos | — |
 | `GET` | `/alunos/{id}` | Buscar aluno por ID | — |
-| `PUT` | `/alunos/{id}` | Atualizar aluno | `{ "nome": "...", "email": "...", "cpf": "..." }` |
+| `PUT` | `/alunos/{id}` | Atualizar aluno | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
 | `DELETE` | `/alunos/{id}` | Deletar aluno | — |
 
 **Exemplo de requisição — criar aluno:**
@@ -138,7 +138,7 @@ POST /alunos
 Content-Type: application/json
 
 {
-  "nome": "João Silva",
+  "nomeCompleto": "João Silva",
   "email": "joao.silva@email.com",
   "cpf": "123.456.789-00"
 }
@@ -149,7 +149,7 @@ Content-Type: application/json
 ```json
 {
   "id": 1,
-  "nome": "João Silva",
+  "nomeCompleto": "João Silva",
   "email": "joao.silva@email.com",
   "cpf": "123.456.789-00"
 }
@@ -161,10 +161,10 @@ Content-Type: application/json
 
 | Método | Rota | Descrição | Body (JSON) |
 |--------|------|-----------|-------------|
-| `POST` | `/professores` | Criar professor | `{ "nome": "...", "email": "...", "cpf": "..." }` |
+| `POST` | `/professores` | Criar professor | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
 | `GET` | `/professores` | Listar todos os professores | — |
 | `GET` | `/professores/{id}` | Buscar professor por ID | — |
-| `PUT` | `/professores/{id}` | Atualizar professor | `{ "nome": "...", "email": "...", "cpf": "..." }` |
+| `PUT` | `/professores/{id}` | Atualizar professor | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
 | `DELETE` | `/professores/{id}` | Deletar professor | — |
 
 **Exemplo de requisição — criar professor:**
@@ -174,7 +174,7 @@ POST /professores
 Content-Type: application/json
 
 {
-  "nome": "Maria Oliveira",
+  "nomeCompleto": "Maria Oliveira",
   "email": "maria.oliveira@escola.com",
   "cpf": "987.654.321-00"
 }
@@ -184,7 +184,7 @@ Content-Type: application/json
 ```json
 {
   "id": 1,
-  "nome": "Maria Oliveira",
+  "nomeCompleto": "Maria Oliveira",
   "email": "maria.oliveira@escola.com",
   "cpf": "987.654.321-00"
 }
