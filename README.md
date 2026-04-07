@@ -193,25 +193,15 @@ Content-Type: application/json
 
 ## 🗄️ Banco de Dados
 
-As tabelas são geradas automaticamente pelo Hibernate na primeira execução.
+As tabelas geradas pelo Hibernate (Visualização DBeaver).
 
 **Tabela `professores`:**
 
-| Coluna | Tipo | Descrição |
-|--------|------|-----------|
-| `id` | BIGINT (PK) | Identificador único |
-| `nome` | VARCHAR | Nome do professor |
-| `email` | VARCHAR | E-mail do professor |
-| `cpf` | VARCHAR | CPF do professor |
+<img width="577" height="289" alt="Tabela professor" src="https://github.com/user-attachments/assets/6a6edc32-f065-45d2-88cf-2766587095a1" />
 
 **Tabela `alunos`:**
 
-| Coluna | Tipo | Descrição |
-|--------|------|-----------|
-| `id` | BIGINT (PK) | Identificador único |
-| `nome` | VARCHAR | Nome do aluno |
-| `email` | VARCHAR | E-mail do aluno |
-| `cpf` | VARCHAR | CPF do aluno |
+<img width="587" height="325" alt="Tabela aluno" src="https://github.com/user-attachments/assets/ce76732a-eceb-46e0-ad4e-9d5110ff9e21" />
 
 ---
 
