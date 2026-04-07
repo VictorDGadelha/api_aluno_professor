@@ -125,10 +125,10 @@ A API estará disponível em: `http://localhost:8080`
 
 | Método | Rota | Descrição | Body (JSON) |
 |--------|------|-----------|-------------|
-| `POST` | `/alunos` | Criar aluno | `{ "nome": "...", "email": "..." }` |
+| `POST` | `/alunos` | Criar aluno | `{ "nomeCompleto": "...", "email": "..." "cpf": "..." }` |
 | `GET` | `/alunos` | Listar todos os alunos | — |
 | `GET` | `/alunos/{id}` | Buscar aluno por ID | — |
-| `PUT` | `/alunos/{id}` | Atualizar aluno | `{ "nome": "...", "email": "..." }` |
+| `PUT` | `/alunos/{id}` | Atualizar aluno | `{ "nomeCompleto": "...", "email": "..." "cpf": "..." }` |
 | `DELETE` | `/alunos/{id}` | Deletar aluno | — |
 
 **Exemplo de requisição — criar aluno:**
@@ -138,8 +138,9 @@ POST /alunos
 Content-Type: application/json
 
 {
-  "nome": "João Silva",
+  "nomeCompleto": "João Silva",
   "email": "joao.silva@email.com"
+  "cpf": "111.222.333-44"
 }
 ```
 
@@ -148,8 +149,9 @@ Content-Type: application/json
 ```json
 {
   "id": 1,
-  "nome": "João Silva",
+  "nomeCompleto": "João Silva",
   "email": "joao.silva@email.com"
+  "cpf": "111.222.333-44"
 }
 ```
 
@@ -159,10 +161,10 @@ Content-Type: application/json
 
 | Método | Rota | Descrição | Body (JSON) |
 |--------|------|-----------|-------------|
-| `POST` | `/professores` | Criar professor | `{ "nome": "...", "email": "..." }` |
+| `POST` | `/professores` | Criar professor | `{ "nomeCompleto": "...", "email": "..." "cpf": "..." }` |
 | `GET` | `/professores` | Listar todos os professores | — |
 | `GET` | `/professores/{id}` | Buscar professor por ID | — |
-| `PUT` | `/professores/{id}` | Atualizar professor | `{ "nome": "...", "email": "..." }` |
+| `PUT` | `/professores/{id}` | Atualizar professor | `{ "nomeCompleto": "...", "email": "..." "cpf": "..." }` |
 | `DELETE` | `/professores/{id}` | Deletar professor | — |
 
 **Exemplo de requisição — criar professor:**
@@ -172,11 +174,20 @@ POST /professores
 Content-Type: application/json
 
 {
-  "nome": "Maria Oliveira",
+  "nomeCompleto": "Maria Oliveira",
   "email": "maria.oliveira@escola.com"
+  "cpf": "123.456.789-10"
 }
 ```
+**Exemplo de resposta:**
 
+```json
+{
+  "id": 1,
+  "nomeCompleto": "Maria Oliveira",
+  "email": "maria.oliveira@escola.com"
+  "cpf": "123.456.789-10"
+}
 ---
 
 ## 🗄️ Banco de Dados
@@ -188,16 +199,18 @@ As tabelas são geradas automaticamente pelo Hibernate na primeira execução.
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | `id` | BIGINT (PK) | Identificador único |
-| `nome` | VARCHAR | Nome do professor |
+| `nomeCompleto` | VARCHAR | Nome do professor |
 | `email` | VARCHAR | E-mail do professor |
+| `cpf` | VARCHAR | CPF do professor |
 
 **Tabela `alunos`:**
 
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | `id` | BIGINT (PK) | Identificador único |
-| `nome` | VARCHAR | Nome do aluno |
+| `nomeCompleto` | VARCHAR | Nome do aluno |
 | `email` | VARCHAR | E-mail do aluno |
+| `cpf` | VARCHAR | CPF do aluno |
 
 ---
 
