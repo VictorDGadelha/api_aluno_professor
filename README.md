@@ -19,7 +19,7 @@
 
 ## 💡 Sobre o Projeto
 
-Esta API fornece operações CRUD completas para o gerenciamento de **alunos** e **professores** em um ambiente educacional. O projeto foi construído seguindo boas práticas de desenvolvimento com Spring Boot, utilizando uma arquitetura em camadas bem definida e persistência de dados com PostgreSQL.
+Esta API fornece operações CRUD para o gerenciamento de **alunos** e **professores** em um ambiente educacional. O projeto foi construído seguindo boas práticas de desenvolvimento com Spring Boot, utilizando uma arquitetura em camadas bem definida e persistência de dados com PostgreSQL.
 
 ---
 
@@ -179,7 +179,16 @@ Content-Type: application/json
   "cpf": "987.654.321-00"
 }
 ```
+**Exemplo de resposta:**
 
+```json
+{
+  "id": 1,
+  "nome": "Maria Oliveira",
+  "email": "maria.oliveira@escola.com",
+  "cpf": "987.654.321-00"
+}
+```
 ---
 
 ## 🗄️ Banco de Dados
@@ -208,7 +217,7 @@ As tabelas são geradas automaticamente pelo Hibernate na primeira execução.
 
 ## 👨‍💻 Autor
 
-**Victor Gadelha**
+**Victor de Oliveira Gadelha**
 
 [![GitHub](https://img.shields.io/badge/GitHub-VictorDGadelha-181717?style=flat&logo=github)](https://github.com/VictorDGadelha)
 
