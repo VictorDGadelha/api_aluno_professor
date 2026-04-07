@@ -19,7 +19,7 @@
 
 ## 💡 Sobre o Projeto
 
-Esta API fornece operações CRUD para o gerenciamento de **alunos** e **professores** em um ambiente educacional. O projeto foi construído seguindo boas práticas de desenvolvimento com Spring Boot, utilizando uma arquitetura em camadas bem definida e persistência de dados com PostgreSQL.
+Esta API fornece operações CRUD completas para o gerenciamento de **alunos** e **professores** em um ambiente educacional. O projeto foi construído seguindo boas práticas de desenvolvimento com Spring Boot, utilizando uma arquitetura em camadas bem definida e persistência de dados com PostgreSQL.
 
 ---
 
@@ -125,10 +125,10 @@ A API estará disponível em: `http://localhost:8080`
 
 | Método | Rota | Descrição | Body (JSON) |
 |--------|------|-----------|-------------|
-| `POST` | `/alunos` | Criar aluno | `{ "nomeCompleto": "...", "email": "..." "cpf": "..." }` |
+| `POST` | `/alunos` | Criar aluno | `{ "nome": "...", "email": "...", "cpf": "..." }` |
 | `GET` | `/alunos` | Listar todos os alunos | — |
 | `GET` | `/alunos/{id}` | Buscar aluno por ID | — |
-| `PUT` | `/alunos/{id}` | Atualizar aluno | `{ "nomeCompleto": "...", "email": "..." "cpf": "..." }` |
+| `PUT` | `/alunos/{id}` | Atualizar aluno | `{ "nome": "...", "email": "...", "cpf": "..." }` |
 | `DELETE` | `/alunos/{id}` | Deletar aluno | — |
 
 **Exemplo de requisição — criar aluno:**
@@ -138,9 +138,9 @@ POST /alunos
 Content-Type: application/json
 
 {
-  "nomeCompleto": "João Silva",
-  "email": "joao.silva@email.com"
-  "cpf": "111.222.333-44"
+  "nome": "João Silva",
+  "email": "joao.silva@email.com",
+  "cpf": "123.456.789-00"
 }
 ```
 
@@ -149,9 +149,9 @@ Content-Type: application/json
 ```json
 {
   "id": 1,
-  "nomeCompleto": "João Silva",
-  "email": "joao.silva@email.com"
-  "cpf": "111.222.333-44"
+  "nome": "João Silva",
+  "email": "joao.silva@email.com",
+  "cpf": "123.456.789-00"
 }
 ```
 
@@ -161,10 +161,10 @@ Content-Type: application/json
 
 | Método | Rota | Descrição | Body (JSON) |
 |--------|------|-----------|-------------|
-| `POST` | `/professores` | Criar professor | `{ "nomeCompleto": "...", "email": "..." "cpf": "..." }` |
+| `POST` | `/professores` | Criar professor | `{ "nome": "...", "email": "...", "cpf": "..." }` |
 | `GET` | `/professores` | Listar todos os professores | — |
 | `GET` | `/professores/{id}` | Buscar professor por ID | — |
-| `PUT` | `/professores/{id}` | Atualizar professor | `{ "nomeCompleto": "...", "email": "..." "cpf": "..." }` |
+| `PUT` | `/professores/{id}` | Atualizar professor | `{ "nome": "...", "email": "...", "cpf": "..." }` |
 | `DELETE` | `/professores/{id}` | Deletar professor | — |
 
 **Exemplo de requisição — criar professor:**
@@ -174,20 +174,12 @@ POST /professores
 Content-Type: application/json
 
 {
-  "nomeCompleto": "Maria Oliveira",
-  "email": "maria.oliveira@escola.com"
-  "cpf": "123.456.789-10"
+  "nome": "Maria Oliveira",
+  "email": "maria.oliveira@escola.com",
+  "cpf": "987.654.321-00"
 }
 ```
-**Exemplo de resposta:**
 
-```json
-{
-  "id": 1,
-  "nomeCompleto": "Maria Oliveira",
-  "email": "maria.oliveira@escola.com"
-  "cpf": "123.456.789-10"
-}
 ---
 
 ## 🗄️ Banco de Dados
@@ -199,7 +191,7 @@ As tabelas são geradas automaticamente pelo Hibernate na primeira execução.
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | `id` | BIGINT (PK) | Identificador único |
-| `nomeCompleto` | VARCHAR | Nome do professor |
+| `nome` | VARCHAR | Nome do professor |
 | `email` | VARCHAR | E-mail do professor |
 | `cpf` | VARCHAR | CPF do professor |
 
@@ -208,7 +200,7 @@ As tabelas são geradas automaticamente pelo Hibernate na primeira execução.
 | Coluna | Tipo | Descrição |
 |--------|------|-----------|
 | `id` | BIGINT (PK) | Identificador único |
-| `nomeCompleto` | VARCHAR | Nome do aluno |
+| `nome` | VARCHAR | Nome do aluno |
 | `email` | VARCHAR | E-mail do aluno |
 | `cpf` | VARCHAR | CPF do aluno |
 
@@ -216,7 +208,7 @@ As tabelas são geradas automaticamente pelo Hibernate na primeira execução.
 
 ## 👨‍💻 Autor
 
-**Victor de Oliveira Gadelha**
+**Victor Gadelha**
 
 [![GitHub](https://img.shields.io/badge/GitHub-VictorDGadelha-181717?style=flat&logo=github)](https://github.com/VictorDGadelha)
 
