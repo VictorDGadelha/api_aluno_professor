@@ -188,11 +188,11 @@ As tabelas são geradas automaticamente pelo Hibernate na primeira execução.
 
 **Tabela `aluno`:**
 
-![Tabela Aluno DBeaver](tabela_professor_DBeaver.png)
+![Tabela Aluno DBeaver](assets/tabela_professor_DBeaver.png)
 
 **Tabela `professor`:**
 
-![Tabela Professor DBeaver](tabela_aluno_DBeaver.png)
+![Tabela Professor DBeaver](assets/tabela_aluno_DBeaver.png)
 
 ---
 
