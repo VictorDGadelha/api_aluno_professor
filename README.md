@@ -19,7 +19,7 @@
 
 ## 💡 Sobre o Projeto
 
-Esta API fornece operações CRUD para o gerenciamento de **alunos** e **professores** em um ambiente educacional. O projeto foi construído seguindo boas práticas de desenvolvimento com Spring Boot, utilizando uma arquitetura em camadas bem definida e persistência de dados com PostgreSQL.
+Esta API fornece operações CRUD completas para o gerenciamento de **alunos** e **professores** em um ambiente educacional. O projeto foi construído seguindo boas práticas de desenvolvimento com Spring Boot, utilizando uma arquitetura em camadas bem definida e persistência de dados com PostgreSQL.
 
 ---
 
@@ -28,11 +28,11 @@ Esta API fornece operações CRUD para o gerenciamento de **alunos** e **profess
 | Tecnologia | Versão | Finalidade |
 |---|---|---|
 | [Java](https://www.oracle.com/java/) | 21 | Linguagem principal |
-| [Spring Boot](https://spring.io/projects/spring-boot) | 4.0.5 | Framework para criação da API REST |
+| [Spring Boot](https://spring.io/projects/spring-boot) | — | Framework para criação da API REST |
 | [Spring Data JPA](https://spring.io/projects/spring-data-jpa) | — | Abstração do acesso ao banco de dados |
 | [Hibernate](https://hibernate.org/) | — | ORM (Object-Relational Mapping) |
-| [PostgreSQL](https://www.postgresql.org/) | 18.3-2 | Banco de dados relacional |
-| [Maven](https://maven.apache.org/) | 3.9.9 | Gerenciamento de dependências e build |
+| [PostgreSQL](https://www.postgresql.org/) | — | Banco de dados relacional |
+| [Maven](https://maven.apache.org/) | — | Gerenciamento de dependências e build |
 
 ---
 
@@ -125,10 +125,10 @@ A API estará disponível em: `http://localhost:8080`
 
 | Método | Rota | Descrição | Body (JSON) |
 |--------|------|-----------|-------------|
-| `POST` | `/alunos` | Criar aluno | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
+| `POST` | `/alunos` | Criar aluno | `{ "nome": "...", "email": "...", "cpf": "..." }` |
 | `GET` | `/alunos` | Listar todos os alunos | — |
 | `GET` | `/alunos/{id}` | Buscar aluno por ID | — |
-| `PUT` | `/alunos/{id}` | Atualizar aluno | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
+| `PUT` | `/alunos/{id}` | Atualizar aluno | `{ "nome": "...", "email": "...", "cpf": "..." }` |
 | `DELETE` | `/alunos/{id}` | Deletar aluno | — |
 
 **Exemplo de requisição — criar aluno:**
@@ -138,7 +138,7 @@ POST /alunos
 Content-Type: application/json
 
 {
-  "nomeCompleto": "João Silva",
+  "nome": "João Silva",
   "email": "joao.silva@email.com",
   "cpf": "123.456.789-00"
 }
@@ -149,7 +149,7 @@ Content-Type: application/json
 ```json
 {
   "id": 1,
-  "nomeCompleto": "João Silva",
+  "nome": "João Silva",
   "email": "joao.silva@email.com",
   "cpf": "123.456.789-00"
 }
@@ -161,10 +161,10 @@ Content-Type: application/json
 
 | Método | Rota | Descrição | Body (JSON) |
 |--------|------|-----------|-------------|
-| `POST` | `/professores` | Criar professor | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
+| `POST` | `/professores` | Criar professor | `{ "nome": "...", "email": "...", "cpf": "..." }` |
 | `GET` | `/professores` | Listar todos os professores | — |
 | `GET` | `/professores/{id}` | Buscar professor por ID | — |
-| `PUT` | `/professores/{id}` | Atualizar professor | `{ "nomeCompleto": "...", "email": "...", "cpf": "..." }` |
+| `PUT` | `/professores/{id}` | Atualizar professor | `{ "nome": "...", "email": "...", "cpf": "..." }` |
 | `DELETE` | `/professores/{id}` | Deletar professor | — |
 
 **Exemplo de requisição — criar professor:**
@@ -174,40 +174,31 @@ POST /professores
 Content-Type: application/json
 
 {
-  "nomeCompleto": "Maria Oliveira",
+  "nome": "Maria Oliveira",
   "email": "maria.oliveira@escola.com",
   "cpf": "987.654.321-00"
 }
 ```
-**Exemplo de resposta:**
 
-```json
-{
-  "id": 1,
-  "nomeCompleto": "Maria Oliveira",
-  "email": "maria.oliveira@escola.com",
-  "cpf": "987.654.321-00"
-}
-```
 ---
 
 ## 🗄️ Banco de Dados
 
-As tabelas geradas pelo Hibernate (Visualização DBeaver).
-
-**Tabela `professor`:**
-
-<img width="577" height="289" alt="Tabela professor" src="https://github.com/user-attachments/assets/6a6edc32-f065-45d2-88cf-2766587095a1" />
+As tabelas são geradas automaticamente pelo Hibernate na primeira execução.
 
 **Tabela `aluno`:**
 
-<img width="587" height="325" alt="Tabela aluno" src="https://github.com/user-attachments/assets/ce76732a-eceb-46e0-ad4e-9d5110ff9e21" />
+![Tabela Aluno DBeaver](Tabela_aluno.png)
+
+**Tabela `professor`:**
+
+![Tabela Professor DBeaver](Tabela_professor.png)
 
 ---
 
 ## 👨‍💻 Autor
 
-**Victor de Oliveira Gadelha**
+**Victor Gadelha**
 
 [![GitHub](https://img.shields.io/badge/GitHub-VictorDGadelha-181717?style=flat&logo=github)](https://github.com/VictorDGadelha)
 
